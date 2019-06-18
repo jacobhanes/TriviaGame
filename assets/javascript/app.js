@@ -60,6 +60,8 @@ const questions = [
    
 $("#startButton").on("click", function(){
     console.log("iv been clicked");
+    let done = $("<button id='doneButton'>Done</button>");
+    $("#buttons").append(done);
 });
 
 
