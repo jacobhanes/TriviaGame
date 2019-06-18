@@ -62,6 +62,11 @@ $("#startButton").on("click", function(){
     console.log("iv been clicked");
     let done = $("<button id='doneButton'>Done</button>");
     $("#buttons").append(done);
+    for (let i = 0; i < questions.length; i++) {
+        console.log(questions[i].question);
+        $("#questions").append("<div class='toAnswer'></div>");
+        $(".toAnswer").text(questions[i].question);
+    }
 });
 
 
