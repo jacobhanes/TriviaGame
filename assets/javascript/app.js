@@ -56,9 +56,11 @@ const questions = [
         choices: ["Morty", "Cosmo", "Newman", "Peterman"],
         answer: 1,
     },
-],
+];
    
-
+$("#startButton").on("click", function(){
+    console.log("iv been clicked");
+});
 
 
 
