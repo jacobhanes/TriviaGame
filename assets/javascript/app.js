@@ -69,12 +69,19 @@ $(document).ready(function () {
 
         for (let i = 0; i < questions.length; i++) {
             console.log(questions[i].question);
-            let trivia = (questions[i].question);
+            const trivia = (questions[i].question);
+            $("#questions").append("<p class='toAnswer'>" + trivia + "</p>");
 
-            $("#questions").append("<p class='toAnswer'></p>");
+            let htmlTemplet = "<ul>";
+            for (let k = 0; k < questions[i].choices.length; k++) {
+                console.log(questions[i].choices[k]);
+                htmlTemplet += "<li><input type='radio'>" + questions[i].choices[k] + "</li>";
 
-            $(".toAnswer").append(trivia);
-        }
+            };
+            htmlTemplet += "</ul>";
+            $("#questions").append(htmlTemplet);
+
+        };
     });
 
     function runTimer() {
