@@ -60,18 +60,20 @@ $(document).ready(function () {
 
     $("#startButton").on("click", function () {
         console.log("iv been clicked");
+        //creates done button
         let done = $("<button id='doneButton'>Done</button>");
         $("#buttons").append(done);
-
+        //creats done button click
         $("#doneButton").on("click", function () {
             console.log("iv been clicked yay")
         });
 
         for (let i = 0; i < questions.length; i++) {
             console.log(questions[i].question);
+            //appends questions
             const trivia = (questions[i].question);
             $("#questions").append("<p class='toAnswer'>" + trivia + "</p>");
-
+            //appends list of choices
             let htmlTemplet = "<ul>";
             for (let k = 0; k < questions[i].choices.length; k++) {
                 console.log(questions[i].choices[k]);
@@ -83,6 +85,16 @@ $(document).ready(function () {
 
         };
     });
+
+    function initializeGame(){
+        correctAnswer = 0;
+        wrongAnswer = 0;
+        gameStarted = true;
+        timer = 30;
+
+    };
+
+
 
     function runTimer() {
         if (!gameStarted) {
