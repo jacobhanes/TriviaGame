@@ -57,22 +57,21 @@ $(document).ready(function () {
             answer: 1,
         },
     ];
+    
+    $(".doneButton").on("click", function () {
+        console.log("iv been clicked yay")
+        endGame();
+        $(".startButton").show();
+        $(".doneButton").hide();
+       
+    });
 
     $(".startButton").on("click", function () {
         console.log("iv been clicked");
-
+        $(".startButton").hide();
+        $(".doneButton").show();
         initializeGame();
-        //creates done button
-        let done = $("<button id='doneButton'>Done</button>");
-        $("#buttons").html(done);
-        //creats done button click
-
-        $("#doneButton").on("click", function () {
-            console.log("iv been clicked yay")
-            endGame();
-            $("#buttons").html("<button class='startButton'>Start</button>")
-        });
-
+        
         for (let i = 0; i < questions.length; i++) {
             console.log(questions[i].question);
             //appends questions
