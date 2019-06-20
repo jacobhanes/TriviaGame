@@ -60,6 +60,7 @@ $(document).ready(function () {
 
     $("#startButton").on("click", function () {
         console.log("iv been clicked");
+        runTimer();
         //creates done button
         let done = $("<button id='doneButton'>Done</button>");
         $("#buttons").append(done);
@@ -98,12 +99,35 @@ $(document).ready(function () {
 
     function runTimer() {
         if (!gameStarted) {
-            intervalId = setInterval(decrement, 1000);
-            running = true;
+            intervalId = setInterval(count, 1000);
+            gameStarted = true;
         }
     };
 
+    function timeConverter(t) {
 
+        let minutes = Math.floor(t / 60);
+        let seconds = t - (minutes * 60);
+      
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+      
+        if (minutes === 0) {
+          minutes = "00";
+        }
+        else if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+      
+        return minutes + ":" + seconds;
+      };
+
+    function count (){
+        timer--
+        let converted = timeConverter(timer);
+        $("#clock").text(converted);
+    }
 
 
 
