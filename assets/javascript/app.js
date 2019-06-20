@@ -58,15 +58,19 @@ $(document).ready(function () {
         },
     ];
 
-    $("#startButton").on("click", function () {
+    $(".startButton").on("click", function () {
         console.log("iv been clicked");
-        runTimer();
+
+        initializeGame();
         //creates done button
         let done = $("<button id='doneButton'>Done</button>");
-        $("#buttons").append(done);
+        $("#buttons").html(done);
         //creats done button click
+
         $("#doneButton").on("click", function () {
             console.log("iv been clicked yay")
+            endGame();
+            $("#buttons").html("<button class='startButton'>Start</button>")
         });
 
         for (let i = 0; i < questions.length; i++) {
@@ -87,12 +91,12 @@ $(document).ready(function () {
         };
     });
 
-    function initializeGame(){
+    function initializeGame() {
         correctAnswer = 0;
         wrongAnswer = 0;
-        gameStarted = true;
         timer = 30;
 
+        runTimer();
     };
 
 
@@ -108,27 +112,33 @@ $(document).ready(function () {
 
         let minutes = Math.floor(t / 60);
         let seconds = t - (minutes * 60);
-      
+
         if (seconds < 10) {
-          seconds = "0" + seconds;
+            seconds = "0" + seconds;
         }
-      
+
         if (minutes === 0) {
-          minutes = "00";
+            minutes = "00";
         }
         else if (minutes < 10) {
-          minutes = "0" + minutes;
+            minutes = "0" + minutes;
         }
-      
-        return minutes + ":" + seconds;
-      };
 
-    function count (){
+        return minutes + ":" + seconds;
+    };
+
+    function count() {
         timer--
         let converted = timeConverter(timer);
         $("#clock").text(converted);
-    }
+    };
 
+    function endGame() {
+        clearInterval(intervalId);
+        $("#questions").html("<p>'Correct '" + correctAnswer + "</p>");
+        $("#questions").append("<p>'Wrong '" + wrongAnswer + "</p>");
+
+    };
 
 
 
