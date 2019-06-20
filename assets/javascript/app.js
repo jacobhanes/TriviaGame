@@ -149,7 +149,7 @@ $(document).ready(function() {
         const ulElement = $('#q' + index + '');
         const answer = questions[index].answer.toString();
         // this is a jquery that will find the selected value in a group of radio buttons in a name
-        var radioValue = $("input[name='q" + index + "']:checked").val();
+        let radioValue = $("input[name='q" + index + "']:checked").val();
         if (answer && radioValue) {
           if (answer.toString() === radioValue.toString()) {
             // Right answer
@@ -157,25 +157,24 @@ $(document).ready(function() {
             ulElement.addClass('correct');
             correctAnswer ++;
             console.log(correctAnswer);
-            // to do need to tally the correct score
+            
           } else {
             console.log('wrong answer');
             ulElement.addClass('wrong');
             wrongAnswer ++;
-            // to do need to tally the wrong score
+            
           }
         } else {
           console.log('Question was not answered');
           ulElement.addClass('wrong');
           wrongAnswer++;
           console.log(wrongAnswer);
-          // to do need to tally the wrong score
+          
         }
         $("#correctScore").text("Correct: " + correctAnswer);
         $("#wrongScore").text("False: " + wrongAnswer)
       }
-      console.log(
-        'this is where we will loop through the options and compare them to the answers'
-      );
+      
+      
     }
   });
