@@ -143,12 +143,12 @@ $(document).ready(function() {
       let converted = timeConverter(timer);
       $('#clock').text(converted);
     }
-    // stuff i am adding
+    
     function calculateScore() {
       for (let index = 0; index < questions.length; index++) {
         const ulElement = $('#q' + index + '');
         const answer = questions[index].answer.toString();
-        // this is a jquery that will find the selected value in a group of radio buttons in a name
+        
         let radioValue = $("input[name='q" + index + "']:checked").val();
         if (answer && radioValue) {
           if (answer.toString() === radioValue.toString()) {
